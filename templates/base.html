@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% block styles %}
+    {{ bootstrap.load_css() }}
+    {% endblock %}
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-between align-items-center py-3 mb-4 border-bottom">
+      <a href="{{ url_for('home') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
+        <span class="fs-4">Library</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">
+            <?xml version="1.0" ?><svg fill="none" height="28" viewBox="0 0 28 28" width="28"
+                                       xmlns="http://www.w3.org/2000/svg"><path
+                d="M4 7C4 6.44771 4.44772 6 5 6H24C24.5523 6 25 6.44771 25 7C25 7.55229 24.5523 8 24
+                8H5C4.44772 8 4 7.55229 4 7Z" fill="black"/><path
+                d="M4 13.9998C4 13.4475 4.44772 12.9997 5 12.9997L16 13C16.5523 13 17 13.4477 17
+                14C17 14.5523 16.5523 15 16 15L5 14.9998C4.44772 14.9998 4 14.552 4 13.9998Z" fill="black"/>
+            <path d="M5 19.9998C4.44772 19.9998 4 20.4475 4 20.9998C4 21.552 4.44772 21.9997 5 21.9997H22C22.5523
+            21.9997 23 21.552 23 20.9998C23 20.4475 22.5523 19.9998 22 19.9998H5Z" fill="black"/></svg>
+        </span>
+      </button>
+
+      <div class="collapse navbar-collapse my-4 " id="navbarNav">
+        <ul class="nav nav-pills ms-auto">
+          <li class="nav-item">
+            <a href="{{ url_for('home') }}" class="nav-link {% if request.path == url_for('home') %}active{% endif %}" aria-current="page">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url_for('add') }}" class="nav-link {% if request.path == url_for('add') %}active{% endif %}">Add book</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url_for('about') }}" class="nav-link {% if request.path == url_for('about') %}active{% endif %}">About</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+</div>
+
+
+<!--<div class="container">-->
+<!--    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">-->
+<!--      <a href={{url_for("home")}} class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none" previewlistener="true">-->
+<!--        <span class="fs-4">Library</span>-->
+<!--      </a>-->
+
+<!--      <ul class="nav nav-pills">-->
+<!--        <li class="nav-item"><a href={{url_for("home")}}-->
+<!--                                class="nav-link {% if request.path == url_for('home') %}active{% endif %}"-->
+<!--                                aria-current="page">Home</a></li>-->
+<!--        <li class="nav-item"><a href={{url_for("add")}}-->
+<!--                                class="nav-link {% if request.path == url_for('add') %}active{% endif %}">Add book</a></li>-->
+<!--        <li class="nav-item"><a href={{url_for("about")}}-->
+<!--                                class="nav-link {% if request.path == url_for('about') %}active{% endif %}">About</a></li>-->
+<!--      </ul>-->
+<!--    </header>-->
+<!--  </div>-->
+    {% block content %}{% endblock %}
+{{ bootstrap.load_js() }}
+</body>
+</html>

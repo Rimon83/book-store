@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Add book
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Add new Book</h1>
+    <form action="{{url_for('add')}}" method="POST" novalidate>
+        {{ form.csrf_token }}
+        <div class="mb-3">
+            {{form.title.label}}
+            {{ form.title(size=30) }}
+        </div>
+        <div class="mb-3">
+            {{form.author.label}}
+            {{ form.author(size=30) }}
+        </div>
+        <div class="mb-3">
+            {{form.rating.label}}
+            {{ form.rating(size=30) }}
+        </div>
+        {{form.add}}
+
+
+    </form>
+</div>
+{% endblock %}
